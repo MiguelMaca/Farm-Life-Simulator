@@ -16,16 +16,16 @@ class Regar(Trigo):
     riego = 0
     contador = 0
     while contador < 10:
-      reg = input('¿Desea regar el cultivo?: '
+      reg = input('¿Desea regar el cultivo?: ')
       if reg == 'Si' or reg == 'si':
         contador +=1
         riego = riego + 5
-        if riego == 25:
-          print('¡Felicidades! Ha aumentado de nivel la cosecha')
-          print('Nivel actual de planta: ', riego)
-          riego = 0
-        else:
-          print('¡Planta regada exitosamente!')
+        while not riego == 25:
+            print('¡Planta regada exitosamente!')
+            
+        print('¡Felicidades! Ha aumentado de nivel la cosecha')
+        print('Nivel actual de planta: ', riego)
+        riego = 0
     print('No se puede seguir regando la planta; ¡Es hora de cultivar!')
 
 
