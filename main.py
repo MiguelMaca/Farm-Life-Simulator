@@ -1,31 +1,45 @@
 from animals import Animals
-from seeds import Seeds
-import pygame
+from repeat_timer import RepeatTimer
+# Primero nombre del archivo, segundo nombre de la clase
 
-# Example file showing a basic pygame "game loop"
-import pygame
+def main():
+    print('Bienvenido al simulador de mascotas')
+    nombre = str(input('Ingrese el nombre de su mascota: '))
+    mascota = Animals(nombre)
 
-# pygame setup
-pygame.init()
-screen = pygame.display.set_mode((1280, 720))
-clock = pygame.time.Clock()
-running = True
+    mascota.sexo()
 
-while running:
-    # poll for events
-    # pygame.QUIT event means the user clicked X to close your window
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+    timer = RepeatTimer(5, mascota.respirar)
+    timer.start()
 
-    # fill the screen with a color to wipe away anything from last frame
-    screen.fill("dark green")
+    timer = RepeatTimer(10, mascota.aburrirse)
+    timer.start()
 
-    # RENDER YOUR GAME HERE
+    timer = RepeatTimer(60, mascota.crecer)
+    timer.start()
 
-    # flip() the display to put your work on screen
-    pygame.display.flip()
+    while True:
+        print('Mi mascota:')
+        print('-----Opciones-----')
+        print('0. Estadisticas de mi Mascota')
+        print('1. Jugar')
+        print('2. Alimentar Mascota')
+        print('3. Mascota Descanse')
+        print('4. Llevar al Veterinario')
+        print('10. Abandonar Mascota :( ')
+        opcion = int(input('Ingrese una opcion: '))
 
-    clock.tick(60)  # limits FPS to 60
-
-pygame.quit()
+        if opcion == 0:
+            mascota.estadisticas()
+        elif opcion == 1:
+            mascota.jugar()
+        elif opcion == 2:
+            mascota.comer()
+        elif opcion == 3:
+            mascota.dormir()
+        elif opcion == 4:
+            mascota.dogtor()
+        elif opcion == 10:
+            print('Adios :( ')
+            break
+main()
