@@ -1,31 +1,12 @@
 class Animals: #La clase inicia con mayuscula y en singular
-    def __init__(self, nombre):
-        self.nombre = nombre
+    def __init__(self):
         self.edad = 0
         self.salud = 100
         self.entretenimeinto = 100
         self.energia = 100
-        self.producto = 10
-
-    def sexo(self):
-        self.sexo = str
-        m = True
-        h = False
-
-        print('Cualquier tecla para macho')
-        print('Enter para Hembra')
-        genero = bool(input('Ingrese el sexo de su mascota:'))
-
-        if genero == m:
-            print('Tu cerdo es macho')
-            self.sexo = 'Es macho'
-        if genero == h:
-            print('Tu cerdo es hembra')
-            self.sexo = 'Es hembra'
 
     def estadisticas(self):
-        print("Nombre:", self.nombre)
-        print("Sexo:", self.sexo)
+        print("Oveja")
         print("Edad:", self.edad)
         print("Salud:", self.salud)
         print("Entretenimiento:", self.entretenimeinto)
@@ -36,7 +17,7 @@ class Animals: #La clase inicia con mayuscula y en singular
             self.energia -= 1
         else:
             if self.salud <= 0:
-                print("Tu cerdo murio de enfermedad")
+                print("Tu oveja murio de enfermedad")
             else:
                 self.salud -= 2
 
@@ -45,16 +26,13 @@ class Animals: #La clase inicia con mayuscula y en singular
             self.entretenimeinto -= 1
         else:
             if self.salud <= 0:
-                print("Tu cerdo murio de aburrimiento")
+                print("Tu oveja murio de aburrimiento")
             else:
                 self.salud -= 1
 
     def crecer(self):
         print("Tu cerdo ha crecido")
         self.edad += 1
-
-    #def _str_(self): #funcion solo retorna tipo string
-     #   return f"Mi mascota es: {self.nombre}"
 
     def comer(self):
         print('1. Concentrado')
@@ -107,7 +85,7 @@ class Animals: #La clase inicia con mayuscula y en singular
 
     def dogtor(self):
         if self.salud >= 96:
-            print('---Tu gato tiene buena salud---')
+            print('---Tu oveja tiene buena salud---')
             print('---No necesita ir al veterinario---')
         else:
             print('1. Vitaminas')
@@ -175,3 +153,33 @@ class Animals: #La clase inicia con mayuscula y en singular
             print('Tu cerdo tiene la energia completa')
         else:
             print('Opcion no Valida')
+
+
+class Pollo(Animals):
+    def __init__(self):
+        super().__init__()
+        self.huevos = 0
+
+    def producto(self):
+        self.huevos = self.huevos + 1
+        print("Tu gallina acaba de producir huevos")
+
+
+class Vaca(Animals):
+    def __init__(self):
+        super().__init__()
+        self.leche = 0
+
+    def producto(self):
+        self.leche = self.leche + 1
+        print("Tu vaca acaba de producir Leche")
+
+
+class Oveja(Animals):
+    def __init__(self):
+        super().__init__()
+        self.lana = 0
+
+    def producto(self):
+        self.lana = self.lana + 1
+        print("Tu oveja acaba de producir lana")

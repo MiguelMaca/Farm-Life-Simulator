@@ -1,13 +1,14 @@
-from animals import Animals
+from animals import Animals, Pollo, Vaca, Oveja
 from repeat_timer import RepeatTimer
 # Primero nombre del archivo, segundo nombre de la clase
 
+
 def main():
     print('Bienvenido al simulador de mascotas')
-    nombre = str(input('Ingrese el nombre de su mascota: '))
-    mascota = Animals(nombre)
-
-    mascota.sexo()
+    mascota = Animals()
+    pollo1 = Pollo()
+    vaca1 = Vaca()
+    oveja1 = Oveja()
 
     timer = RepeatTimer(5, mascota.respirar)
     timer.start()
@@ -18,15 +19,23 @@ def main():
     timer = RepeatTimer(60, mascota.crecer)
     timer.start()
 
+    timer = RepeatTimer(60, pollo1.producto)
+    timer.start()
+
+    timer = RepeatTimer(60, vaca1.producto)
+    timer.start()
+
+    timer = RepeatTimer(60, oveja1.producto)
+    timer.start()
+
     while True:
-        print('Mi mascota:')
         print('-----Opciones-----')
-        print('0. Estadisticas de mi Mascota')
+        print('0. Estadisticas de mis Animales')
         print('1. Jugar')
-        print('2. Alimentar Mascota')
-        print('3. Mascota Descanse')
+        print('2. Alimentar Animales')
+        print('3. Animales Descansen')
         print('4. Llevar al Veterinario')
-        print('10. Abandonar Mascota :( ')
+        print('10. Salir')
         opcion = int(input('Ingrese una opcion: '))
 
         if opcion == 0:
