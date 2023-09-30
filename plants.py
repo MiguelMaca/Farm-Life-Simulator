@@ -103,13 +103,16 @@ class Arroz:
         prod2 = 'arroz'
         productos_g.append(prod2)
 
-    def fertilizar(self, cantidad):
-        self.contadora += cantidad
-        if self.contadora > 15:
-            self.contadora = 15
+    def fertilizar(self, cantidad_fert):
+        if cantidad_fert == 0:
+            print('No tiene fertilizante')
+        else:
+            self.contadora += cantidad_fert
+            if self.contadora > 15:
+                self.contadora = 15
 
     def plaga(self):
-        print('¡PLAGA ENCONTRADA!, tus plantas bajaron de nivel :( ')
+        print('¡PLAGA ENCONTRADA!, el arroz bajo de nivel :( ')
         self.contadora = self.contadora - 2
 
 
@@ -155,6 +158,14 @@ class Maiz:
         prod3 = 'maiz'
         productos_g.append(prod3)
 
+    def fertilizar(self, cantidad_fert):
+        if cantidad_fert == 0:
+            print('No tiene fertilizante')
+        else:
+            self.contadorm += cantidad_fert
+            if self.contadorm > 15:
+                self.contadorm = 15
+
 
 class Avena:
     def __init__(self):
@@ -197,6 +208,14 @@ class Avena:
         print('¡El cultivo (Avena) ha sido cosechado con exito!')
         prod4 = 'avena'
         productos_g.append(prod4)
+
+    def fertilizar(self, cantidad_fert):
+        if cantidad_fert == 0:
+            print('No tiene fertilizante')
+        else:
+            self.contadorav += cantidad_fert
+            if self.contadorav > 15:
+                self.contadorav = 15
 
 
 class Tomate:
@@ -241,7 +260,16 @@ class Tomate:
         prod5 = 'tomate'
         productos_g.append(prod5)
 
+    def fertilizar(self, cantidad_fert):
+        if cantidad_fert == 0:
+            print('No tiene fertilizante')
+        else:
+            self.contadorto += cantidad_fert
+            if self.contadorto > 15:
+                self.contadorto = 15
 
+
+comprados = []
 productos_g = []
 cosechar_c = []
 lista = []
