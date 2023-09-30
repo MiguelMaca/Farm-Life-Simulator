@@ -1,8 +1,7 @@
 from animals import Pollo, Vaca, Oveja
 from repeat_timer import RepeatTimer
+from economia_comercio import JugadorMonedas
 # Primero nombre del archivo, segundo nombre de la clase
-
-w = 1
 
 
 def main():

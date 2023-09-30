@@ -1,4 +1,4 @@
-#from Jugador_monedas import Economia_comercio
+from economia_comercio import JugadorMonedas
 
 class Animals: #La clase inicia con mayuscula y en singular
     def __init__(self):
@@ -475,3 +475,8 @@ class Oveja(Animals):
             print('Tu oveja tiene la energia completa')
         else:
             print('Opcion no Valida')
+
+
+compra = JugadorMonedas()
+
+compra.compra()
