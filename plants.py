@@ -1,9 +1,10 @@
 #Plantas
+from timer import RepeatTimer
+
 
 class Trigo:
     def __init__(self):
         self.contadort = 0
-        self.canti_ferti = 0
 
     def sembrar(self):
         print('¡El cultivo (Trigo) ha sido sembrado con exito!')
@@ -47,10 +48,18 @@ class Trigo:
         if cosecht in cosechar_c:
             cosechar_c.remove(cosecht)
 
-    def fertilizar(self):
-        self.contadort += self.canti_ferti
-        if self.contadort > 15:
-            self.contadort = 15
+    def fertilizar(self, cantidad_fert):
+        if cantidad_fert == 0:
+            print('No tiene fertilizante')
+        else:
+            self.contadort += cantidad_fert
+            if self.contadort > 15:
+                self.contadort = 15
+
+    def plaga(self):
+        print('¡PLAGA ENCONTRADA!, el trigo bajo de nivel :( ')
+        self.contadort = self.contadort - 2
+
 
 class Arroz:
     def __init__(self):
@@ -98,6 +107,11 @@ class Arroz:
         self.contadora += cantidad
         if self.contadora > 15:
             self.contadora = 15
+
+    def plaga(self):
+        print('¡PLAGA ENCONTRADA!, tus plantas bajaron de nivel :( ')
+        self.contadora = self.contadora - 2
+
 
 class Maiz:
     def __init__(self):
@@ -236,9 +250,11 @@ cultivo_dos = Arroz()
 cultivo_tres = Maiz()
 cultivo_cuatro = Avena()
 cultivo_cinco = Tomate()
+timer = RepeatTimer(30,cultivo_uno.plaga)
+timer.start()
 while True:
-    opci = int(input('¡Bievenido! \n 1.- Sembrar \n 2.- Regar \n 3.- Cosechar \n 4.- Limpiar plagas \n 5.- Fertilizar '
-                     '\n 6.- Salir \n Por favor, elija alguna de estas opciones: '))
+    opci = int(input('¡Bievenido! \n 1.- Sembrar \n 2.- Regar \n 3.- Cosechar \n 4.- Fertilizar '
+                     '\n 5.- Salir \n Por favor, elija alguna de estas opciones: '))
 
     match(opci):
         case 1:
@@ -296,7 +312,7 @@ while True:
             elif cos == 'tomate':
                 cultivo_cinco.cosechar()
 
-        case 5:
+        case 4:
 
             print('Cultivos actuales para fertilizar: ', lista)
             fert = input('¿Desea fertilizar algun cultivo: ?')
@@ -313,7 +329,7 @@ while True:
                 elif fert_c == 'tomate':
                     cultivo_cinco.fertilizar()
 
-    if opci == 6:
+    if opci == 5:
         break
 
 
