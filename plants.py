@@ -358,6 +358,7 @@ while True:
                     cultivo_cinco.fertilizar()
 
     if opci == 5:
+        import menu_principal
         break
 
 
