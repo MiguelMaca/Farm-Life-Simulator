@@ -92,14 +92,12 @@ class Animals: #La clase inicia con mayuscula y en singular
 
 
 class Pollo(Animals):
-    def __init__(self):
+    def __init__(self, huevos):
         super().__init__()
-        self.concentrado = self.concentrado
-        self.heno = self.heno
-        self.huevos = 0
+        self.huevos = huevos
 
     def producto(self):
-        self.huevos = self.huevos =+ 1
+        self.huevos = self.huevos + 1
         print("Tu gallina acaba de producir huevos")
 
     def estadisticas(self):
@@ -411,7 +409,7 @@ class Oveja(Animals):
         self.lana = 0
 
     def producto(self):
-        self.lana = + 1
+        self.lana = self.lana + 1
         print("Tu oveja acaba de producir lana")
 
     def estadisticas(self):
@@ -1053,11 +1051,10 @@ class InicioP:
                 break
 
 
-class Ventaja(Pollo, Vaca, Oveja):
-    def __init__(self):
-        Pollo.__init__(self)
-        Vaca.__init__(self)
-        Oveja.__init__(self)
+class Ventaja(Pollo):
+    def __init__(self, huevos):
+        super().__init__(huevos)
+        
 
     def venda(self):
         print("1. Huevos")
@@ -1070,22 +1067,9 @@ class Ventaja(Pollo, Vaca, Oveja):
                 print("Vendio 1 huevo")
                 print("Gano 3 monedas")
                 self.monedas = self.monedas + 3
+                self.huevos = self.huevos - 1
             else:
                 print("No tiene huevos en el inventario")
-        elif que_deseav == 2:
-            if self.leche > 0:
-                print("Vendio 1 leche")
-                print("Gano 10 monedas")
-                self.monedas = self.monedas + 10
-            else:
-                print("No tiene leche en el inventario")
-        if que_deseav == 3:
-            if self.lana > 0:
-                print("Vendio 1 lana")
-                print("Gano 25 monedas")
-                self.monedas = self.monedas + 25
-            else:
-                print("No tiene lana en el inventario")
 
     def mejora(self):
         print("1. Nivel 1 (Costo 300 monedas)")
