@@ -17,6 +17,9 @@ class Animals: #La clase inicia con mayuscula y en singular
         self.productop = 45
         self.productov = 60
         self.productoo = 75
+        self.huevos = 0
+        self.leche = 0
+        self.lana = 0
 
     def compra(self):
         que_desea = int(input("Productos para:\n1. Animales\n2. Plantas\nQue desea comprar: "))
@@ -92,20 +95,17 @@ class Animals: #La clase inicia con mayuscula y en singular
 
 
 class Pollo(Animals):
-    def __init__(self):
-        super().__init__()
-        self.huevos = 1
 
     def producto(self):
         self.huevos += 1
         print("Tu gallina acaba de producir huevos")
 
-    def venda(self):
-        if self.huevos > 0:
+    def venta(self):
+        if self.huevos >= 1:
             print("Vendio 1 huevo")
             print("Gano 3 monedas")
-            self.monedas = self.monedas + 3
-            self.huevos = self.huevos - 1
+            self.monedas += 3
+            self.huevos -= 1
         else:
             print("No tiene huevos en el inventario")
 
@@ -260,11 +260,19 @@ class Pollo(Animals):
 class Vaca(Animals):
     def __init__(self):
         super().__init__()
-        self.leche = 0
 
     def producto(self):
         self.leche = self.leche + 1
         print("Tu vaca acaba de producir Leche")
+
+    def venta(self):
+        if self.leche == 1:
+            print("Vendio 1 leche")
+            print("Gano 10 monedas")
+            self.monedas = self.monedas + 10
+            self.leche = self.leche - 1
+        else:
+            print("No tiene leche en el inventario")
 
     def estadisticas(self):
         print("Oveja")
@@ -415,11 +423,19 @@ class Vaca(Animals):
 class Oveja(Animals):
     def __init__(self):
         super().__init__()
-        self.lana = 0
 
     def producto(self):
         self.lana = self.lana + 1
         print("Tu oveja acaba de producir lana")
+
+    def venta(self):
+        if self.lana == 1:
+            print("Vendio 1 lana")
+            print("Gano 25 monedas")
+            self.monedas = self.monedas + 3
+            self.lana = self.lana - 1
+        else:
+            print("No tiene lana en el inventario")
 
     def estadisticas(self):
         print("Oveja")
@@ -566,6 +582,31 @@ class Oveja(Animals):
         else:
             print('Opcion no Valida')
 
+pollo1 = Pollo()
+vaca1 = Vaca()
+oveja1 = Oveja()
+
+timer = RepeatTimer(5, pollo1.respirar)
+timer.start()
+timer = RepeatTimer(5, vaca1.respirar)
+timer.start()
+timer = RepeatTimer(5, oveja1.respirar)
+timer.start()
+
+timer = RepeatTimer(10, pollo1.aburrirse)
+timer.start()
+timer = RepeatTimer(10, vaca1.aburrirse)
+timer.start()
+timer = RepeatTimer(10, oveja1.aburrirse)
+timer.start()
+
+timer = RepeatTimer(45, pollo1.crecer)
+timer.start()
+timer = RepeatTimer(75, vaca1.crecer)
+timer.start()
+timer = RepeatTimer(60, oveja1.crecer)
+timer.start()
+
 
 class Inicio:
 
@@ -657,40 +698,6 @@ class Inicio:
                     break
 
             break
-
-
-pollo1 = Pollo()
-vaca1 = Vaca()
-oveja1 = Oveja()
-animalt = Animals()
-
-timer = RepeatTimer(5, pollo1.respirar)
-timer.start()
-timer = RepeatTimer(5, vaca1.respirar)
-timer.start()
-timer = RepeatTimer(5, oveja1.respirar)
-timer.start()
-
-timer = RepeatTimer(10, pollo1.aburrirse)
-timer.start()
-timer = RepeatTimer(10, vaca1.aburrirse)
-timer.start()
-timer = RepeatTimer(10, oveja1.aburrirse)
-timer.start()
-
-timer = RepeatTimer(45, pollo1.crecer)
-timer.start()
-timer = RepeatTimer(75, vaca1.crecer)
-timer.start()
-timer = RepeatTimer(60, oveja1.crecer)
-timer.start()
-
-timer = RepeatTimer(animalt.productop, pollo1.producto)
-timer.start()
-timer = RepeatTimer(60, vaca1.producto)
-timer.start()
-timer = RepeatTimer(75, oveja1.producto)
-timer.start()
 
 
 class Trigo(Animals):
@@ -1061,50 +1068,39 @@ class InicioP:
 
 
 class Ventaja(Pollo):
-    def __init__(self):
-        super().__init__()
-
-    def venda(self):
-        print("1. Huevos")
-        print("2. Leche")
-        print("3. Lana")
-        que_deseav = int(input("Que desea vender en el mercado?"))
-
-        if que_deseav == 1:
-            if self.huevos > 0:
-                print("Vendio 1 huevo")
-                print("Gano 3 monedas")
-                self.monedas = self.monedas + 3
-                self.huevos = self.huevos - 1
-            else:
-                print("No tiene huevos en el inventario")
 
     def mejora(self):
-        print("1. Nivel 1 (Costo 300 monedas)")
-        print("2. Nivel 2 (Costo 400 monedas)")
-        print("3. Nivel 3 (Costo 500 monedas)")
+        print("1. Nivel 1 (Costo 100 monedas)")
+        print("2. Nivel 2 (Costo 200 monedas)")
+        print("3. Nivel 3 (Costo 300 monedas)")
         opcion = int(input("Que mejora desea realizar a la granja"))
 
         if opcion == 1:
-            if self.monedas < 300:
+            if self.monedas < 100:
                 print("No tienes suficientes monedas!!!")
             else:
                 self.productop = 40
                 self.productoo = 70
                 self.productov = 55
+                print("Tu granja es de Nivel 1 !!!")
+                self.monedas -= 100
         elif opcion == 2:
-            if self.monedas < 400:
+            if self.monedas < 200:
                 print("No tienes suficientes monedas!!!")
             else:
                 self.productop = 35
                 self.productoo = 65
                 self.productov = 50
+                print("Tu granja es de Nivel 2 !!!")
+                self.monedas -= 200
         elif opcion == 3:
-            if self.monedas < 400:
+            if self.monedas < 300:
                 print("No tienes suficientes monedas!!!")
             else:
                 self.productop = 30
                 self.productoo = 60
                 self.productov = 45
+                print("Tu granja es de Nivel 3 !!!")
+                self.monedas -= 300
         else:
             print("Regresando al menu")

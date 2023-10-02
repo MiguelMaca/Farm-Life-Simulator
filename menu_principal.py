@@ -1,4 +1,7 @@
+import sys
+
 from animals import Animals, Pollo, Vaca, Oveja, Inicio, InicioP, Ventaja
+from repeat_timer import RepeatTimer
 
 cultiv = '🌽'
 anima = '🐄'
@@ -9,7 +12,17 @@ compra = Animals()
 animal = Inicio()
 planta = InicioP()
 venta = Ventaja()
-polllo1 = Pollo()
+pollo1 = Pollo()
+vaca1 = Vaca()
+oveja1 = Oveja()
+animalt = Animals()
+
+timer = RepeatTimer(animalt.productop, pollo1.producto)
+timer.start()
+timer = RepeatTimer(animalt.productov, vaca1.producto)
+timer.start()
+timer = RepeatTimer(animalt.productoo, oveja1.producto)
+timer.start()
 
 while True:
     print('\033[1;34m================================================')
@@ -40,10 +53,15 @@ while True:
             print("3. Lana")
             que_deseav = int(input("Que desea vender en el mercado?"))
             if que_deseav == 1:
-                polllo1.venda()
+                pollo1.venta()
+            elif que_deseav == 2:
+                vaca1.venta()
+            elif que_deseav == 3:
+                oveja1.venta()
         elif opmerca == 3:
             venta.mejora()
     elif opcion == 4:
-        break
+        sys.exit()
 
-print('\033[1;32mFARM LIFE SIMULATOR ')
+#print('\033[1;32mFARM LIFE SIMULATOR ')
+
