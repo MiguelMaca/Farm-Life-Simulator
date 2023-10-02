@@ -1,4 +1,4 @@
-from animals import Animals, Inicio, InicioP, Ventaja
+from animals import Animals, Pollo, Vaca, Oveja, Inicio, InicioP, Ventaja
 
 cultiv = '🌽'
 anima = '🐄'
@@ -9,6 +9,7 @@ compra = Animals()
 animal = Inicio()
 planta = InicioP()
 venta = Ventaja()
+polllo1 = Pollo()
 
 while True:
     print('\033[1;34m================================================')
@@ -34,7 +35,12 @@ while True:
         if opmerca == 1:
             compra.compra()
         elif opmerca == 2:
-            venta.venda()
+            print("1. Huevos")
+            print("2. Leche")
+            print("3. Lana")
+            que_deseav = int(input("Que desea vender en el mercado?"))
+            if que_deseav == 1:
+                polllo1.venda()
         elif opmerca == 3:
             venta.mejora()
     elif opcion == 4:

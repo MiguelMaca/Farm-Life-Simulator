@@ -92,13 +92,22 @@ class Animals: #La clase inicia con mayuscula y en singular
 
 
 class Pollo(Animals):
-    def __init__(self, huevos):
+    def __init__(self):
         super().__init__()
-        self.huevos = huevos
+        self.huevos = 1
 
     def producto(self):
-        self.huevos = self.huevos + 1
+        self.huevos += 1
         print("Tu gallina acaba de producir huevos")
+
+    def venda(self):
+        if self.huevos > 0:
+            print("Vendio 1 huevo")
+            print("Gano 3 monedas")
+            self.monedas = self.monedas + 3
+            self.huevos = self.huevos - 1
+        else:
+            print("No tiene huevos en el inventario")
 
     def estadisticas(self):
         print("Pollo")
@@ -1052,9 +1061,8 @@ class InicioP:
 
 
 class Ventaja(Pollo):
-    def __init__(self, huevos):
-        super().__init__(huevos)
-        
+    def __init__(self):
+        super().__init__()
 
     def venda(self):
         print("1. Huevos")
