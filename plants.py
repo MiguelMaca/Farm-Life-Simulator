@@ -28,7 +28,7 @@ class Trigo:
                 elif self.contadort > 10 and self.contadort <= 15:
                     print('¡Planta regada exitosamente!')
             else:
-                return opci
+                return InicioP
 
 
         print('No se puede seguir regando la planta, estado: Maduracion; ¡Es hora de cosechar!')
@@ -38,7 +38,7 @@ class Trigo:
         if elimt in lista:
             lista.remove(elimt)
         self.contadort = 0
-        return opci
+        return InicioP
 
     def cosechar(self):
         print('¡El cultivo (Trigo) ha sido cosechado con exito!')
@@ -87,7 +87,7 @@ class Arroz:
                 elif self.contadora > 10 and self.contadora <= 15:
                     print('¡Planta regada exitosamente!')
             else:
-                return opci
+                return InicioP
 
         print('No se puede seguir regando la planta, estado: Maduracion; ¡Es hora de cosechar!')
         c2 = 'arroz'
@@ -96,7 +96,7 @@ class Arroz:
         if elima in lista:
             lista.remove(elima)
         self.contadora = 0
-        return opci
+        return InicioP
 
     def cosechar(self):
         print('¡El cultivo (Arroz) ha sido cosechado con exito!')
@@ -142,7 +142,7 @@ class Maiz:
                 elif self.contadorm > 10 and self.contadorm <= 15:
                     print('¡Planta regada exitosamente!')
             else:
-                return opci
+                return InicioP
 
         print('No se puede seguir regando la planta, estado: Maduracion; ¡Es hora de cosechar!')
         c3 = 'maiz'
@@ -151,7 +151,7 @@ class Maiz:
         if elimm in lista:
             lista.remove(elimm)
         self.contadorm = 0
-        return opci
+        return InicioP
 
     def cosechar(self):
         print('¡El cultivo (Maiz) ha sido cosechado con exito!')
@@ -193,7 +193,7 @@ class Avena:
                 elif self.contadorav > 10 and self.contadorav <= 15:
                     print('¡Planta regada exitosamente!')
             else:
-                return opci
+                return InicioP
 
         print('No se puede seguir regando la planta, estado: Maduracion; ¡Es hora de cosechar!')
         c4 = 'avena'
@@ -202,7 +202,7 @@ class Avena:
         if elimav in lista:
             lista.remove(elimav)
         self.contadorav = 0
-        return opci
+        return InicioP
 
     def cosechar(self):
         print('¡El cultivo (Avena) ha sido cosechado con exito!')
@@ -244,7 +244,7 @@ class Tomate:
                 elif self.contadorto > 10 and self.contadorto <= 15:
                     print('¡Planta regada exitosamente!')
             else:
-                return opci
+                return InicioP
 
         print('No se puede seguir regando la planta, estado: Maduracion; ¡Es hora de cosechar!')
         c5 = 'tomate'
@@ -253,7 +253,7 @@ class Tomate:
         if elimto in lista:
             lista.remove(elimto)
         self.contadorto = 0
-        return opci
+        return InicioP
 
     def cosechar(self):
         print('¡El cultivo (Tomate) ha sido cosechado con exito!')

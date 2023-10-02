@@ -1,16 +1,14 @@
-import sys
-from comercio import JugadorMonedas
-from animals import Inicio
-from plants import InicioP
+from animals import Animals, Inicio, InicioP, Ventaja
 
 cultiv = '🌽'
 anima = '🐄'
 merca = '🚚'
 sal = '❌'
 
-compra = JugadorMonedas()
+compra = Animals()
 animal = Inicio()
 planta = InicioP()
+venta = Ventaja()
 
 while True:
     print('\033[1;34m================================================')
@@ -29,6 +27,17 @@ while True:
     elif opcion == 2:
         animal.menuan()
     elif opcion == 3:
-        compra.compra()
+        print("1. Comprar")
+        print("2. Vender")
+        print("3. Mejora")
+        opmerca = int(input("Que desea hacer: "))
+        if opmerca == 1:
+            compra.compra()
+        elif opmerca == 2:
+            venta.venda()
+        elif opmerca == 3:
+            venta.mejora()
     elif opcion == 4:
-        sys.exit()
+        break
+
+print('\033[1;32mFARM LIFE SIMULATOR ')
