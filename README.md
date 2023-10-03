@@ -1,5 +1,6 @@
 # Farm-Life-Simulator
  Proyecto1, Programacion Avanzada
+ 
 ![Imagen del juego Farmville](https://play-lh.googleusercontent.com/fOCRdyEqpspMBxvjbrZy_EdYFFYnO7K-01_DOzcH72cQBx1kjkb3OK2V7LOkmGiPQkRB=w526-h296-rw)
 
 ## Funcionamiento del juego
