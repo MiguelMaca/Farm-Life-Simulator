@@ -686,7 +686,7 @@ class Trigo(Animals):
     def __init__(self):
         super().__init__()
         self.contadort = 0
-        self.fertil = 1
+        self.fertil = 2
 
     def sembrar(self):
         print('¡El cultivo (Trigo) ha sido sembrado con exito!')
