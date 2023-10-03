@@ -1055,13 +1055,25 @@ class InicioP(Trigo, Arroz, Maiz, Avena, Tomate, Animals):
                         else:
                             print("No tiene fertilizante")
                     elif fert_c == 'arroz':
-                        cultivo_dos.fertilizar()
+                        if self.fertilizante > 1:
+                            cultivo_dos.fertilizar()
+                        else:
+                            print("No tiene fertilizante")
                     elif fert_c == 'maiz':
-                        cultivo_tres.fertilizar()
+                        if self.fertilizante > 1:
+                            cultivo_tres.fertilizar()
+                        else:
+                            print("No tiene fertilizante")
                     elif fert_c == 'avena':
-                        cultivo_cuatro.fertilizar()
+                        if self.fertilizante > 1:
+                            cultivo_cuatro.fertilizar()
+                        else:
+                            print("No tiene fertilizante")
                     elif fert_c == 'tomate':
-                        cultivo_cinco.fertilizar()
+                        if self.fertilizante > 1:
+                            cultivo_cinco.fertilizar()
+                        else:
+                            print("No tiene fertilizante")
 
             elif opci == 5:
                 break
