@@ -7,11 +7,11 @@ class Animals: #La clase inicia con mayuscula y en singular
         self.salud = 100
         self.entretenimeinto = 100
         self.energia = 100
-        self.vacunas = 0
-        self.vitaminas = 0
-        self.jarabe = 0
-        self.heno = 0
-        self.concentrado = 0
+        self.vacunas = 1
+        self.vitaminas = 1
+        self.jarabe = 1
+        self.heno = 1
+        self.concentrado = 1
         self.monedas = 350
         self.fertilizante = 0
         self.productop = 45
@@ -21,77 +21,21 @@ class Animals: #La clase inicia con mayuscula y en singular
         self.leche = 0
         self.lana = 0
 
-    def compra(self):
-        que_desea = int(input("Productos para:\n1. Animales\n2. Plantas\nQue desea comprar: "))
+    def henos(self):
+        self.heno += 25
+        print("Se compro 25 de heno")
 
-        while que_desea > 2 or que_desea < 1:
-            que_desea = int(input("Opcion invalida\nProductos para:\n1. Animales\n2. Plantas\nQue desea comprar: "))
+    def vita(self):
+        self.vitaminas += 5
+        print("Se compro 5 de vitaminas")
 
-        if que_desea == 1:
-            que_desea_animales = int(input("1. Comida\n2. Medicamento\nQue desea obtener: "))
+    def jarabe(self):
+        self.jarabe += 5
+        print("Se compro 5 jarabes")
 
-            while que_desea_animales > 2 or que_desea_animales < 1:
-                que_desea_animales = int(input("Opcion invalida\n1. Comida\n2. Medicamento\nQue desea obtener: "))
-
-            if que_desea_animales == 1:
-                comida = int(input("1. Concentrado\n2. Heno\nQue comida desea: "))
-
-                while comida > 2 or comida < 1:
-                    comida = int(input("Opcion invalida\n1. Concentrado\n2. Heno\nQue comida desea: "))
-
-                if comida == 1:
-                    if self.monedas >= 50:
-                        self.monedas -= 50
-                        self.concentrado += 50
-                        print("A comprado 50 de Concentrado")
-                        print("Tu dinere: ", self.monedas)
-                    else:
-                        print("No tienes suficiente dinero!!!")
-
-                elif comida == 2:
-                    if self.monedas > 100:
-                        self.monedas -= 50
-                        self.heno += 25
-                        print("A comprado 25 de Heno")
-                        print("Tu dinere: ", self.monedas)
-                    else:
-                        print("No tienes suficiente dinero!!!")
-
-            elif que_desea_animales == 2:
-
-                medicamentos = int(input("1. Vacunas\n2. Vitaminas\3. Jarabe para la tos\nQue medicamento quiere: "))
-
-                while medicamentos > 3 or medicamentos < 1:
-
-                    medicamentos = int(input("Opcion invalida\n1. Vacunas\n2. Vitaminas\3. Jarabe para la tos\nQue medicamento quiere: "))
-
-                if medicamentos == 1:
-                    if self.monedas > 100:
-                        self.monedas -= 100
-                        self.vacunas += 1
-                elif medicamentos == 2:
-                    if self.monedas > 75:
-                        self.monedas -= 75
-                        self.vitaminas += 1
-                elif medicamentos == 3:
-                    if self.monedas > 50:
-                        self.monedas -= 50
-                        self.jarabe += 1
-
-        elif que_desea == 2:
-            print("Fertilizante")
-            print("1. Comprar")
-            print("2. Salir")
-            plantaop = int(input("Desea comprar fertilizante para las plantas?"))
-
-            if plantaop == 1:
-                if self.monedas > 50:
-                    self.fertilizante += 50
-                    self.monedas -= 25
-                    print("A comprando 50 de fertilizante")
-                    print("Tu dinero: ", self.monedas)
-                else:
-                    print("No tienes suficiente dinero!!!")
+    def vacun(self):
+        self.vacunas += 5
+        print("Se compro 5 vacunas")
 
     def ganancia_pollo(self):
         self.monedas += 5
@@ -146,6 +90,9 @@ class Animals: #La clase inicia con mayuscula y en singular
 
 
 class Pollo(Animals):
+    
+    def __init__(self):
+        super().__init__()
 
     def producto(self):
         self.huevos += 1
@@ -154,6 +101,10 @@ class Pollo(Animals):
     def venta(self):
         print("Vendio 1 huevo")
         self.huevos -= 1
+
+    def concentra(self):
+        self.concentrado += 50
+        print("Se compro 50 de concentrado")
 
     def estadisticas(self):
         print("Pollo")
@@ -308,11 +259,6 @@ class Vaca(Animals):
     def producto(self):
         self.leche += 1
         print("Tu vaca acaba de producir Leche")
-
-    def ganancia(self):
-        self.monedas += 10
-        print("Gano 10 monedas")
-        print("Tu dinero total: ", self.monedas)
 
     def venta(self):
         print("Vendio 1 leche")
@@ -469,11 +415,6 @@ class Oveja(Animals):
     def producto(self):
         self.lana += 1
         print("Tu oveja acaba de producir lana")
-
-    def ganancia(self):
-        self.monedas += 25
-        print("Gano 25 monedas")
-        print("Tu dinero total: ", self.monedas)
 
     def venta(self):
         print("Vendio 1 lana")
@@ -789,13 +730,15 @@ class Trigo(Animals):
         if cosecht in cosechar_c:
             cosechar_c.remove(cosecht)
 
+    def compra_fert(self):
+        self.fertilizante += 5
+        print("Se agrego Fertilizante")
+
     def fertilizar(self):
-        if self.fertilizante == 0:
-            print('No tiene fertilizante')
-        else:
-            self.contadort += self.fertilizante
-            if self.contadort > 15:
-                self.contadort = 15
+        self.contadort += 2
+        self.fertilizante -= 2
+        if self.contadort > 15:
+            self.contadort = 15
 
     def plaga(self):
         print('¡PLAGA ENCONTRADA!, el trigo bajo de nivel :( ')
@@ -845,13 +788,14 @@ class Arroz(Animals):
         prod2 = 'arroz'
         productos_g.append(prod2)
 
+    def compra_fert(self):
+        self.fertilizante += 5
+
     def fertilizar(self):
-        if self.fertilizante == 0:
-            print('No tiene fertilizante')
-        else:
-            self.contadora += self.fertilizante
-            if self.contadora > 15:
-                self.contadora = 15
+        self.contadora += 2
+        self.fertilizante -= 2
+        if self.contadora > 15:
+            self.contadora = 15
 
     def plaga(self):
         print('¡PLAGA ENCONTRADA!, el arroz bajo de nivel :( ')
@@ -901,13 +845,14 @@ class Maiz(Animals):
         prod3 = 'maiz'
         productos_g.append(prod3)
 
+    def compra_fert(self):
+        self.fertilizante += 5
+
     def fertilizar(self):
-        if self.fertilizante == 0:
-            print('No tiene fertilizante')
-        else:
-            self.contadorm += self.fertilizante
-            if self.contadorm > 15:
-                self.contadorm = 15
+        self.contadorm += 2
+        self.fertilizante -= 2
+        if self.contadorm > 15:
+            self.contadorm = 15
 
 
 class Avena(Animals):
@@ -953,13 +898,14 @@ class Avena(Animals):
         prod4 = 'avena'
         productos_g.append(prod4)
 
+    def compra_fert(self):
+        self.fertilizante += 5
+
     def fertilizar(self):
-        if self.fertilizante == 0:
-            print('No tiene fertilizante')
-        else:
-            self.contadorav += self.fertilizante
-            if self.contadorav > 15:
-                self.contadorav = 15
+        self.contadorav += 2
+        self.fertilizante -= 2
+        if self.contadorav > 15:
+            self.contadorav = 15
 
 
 class Tomate(Animals):
@@ -1005,13 +951,14 @@ class Tomate(Animals):
         prod5 = 'tomate'
         productos_g.append(prod5)
 
+    def compra_fert(self):
+        self.fertilizante += 5
+
     def fertilizar(self):
-        if self.fertilizante == 0:
-            print('No tiene fertilizante')
-        else:
-            self.contadorto += self.fertilizante
-            if self.contadorto > 15:
-                self.contadorto = 15
+        self.contadorto += 2
+        self.fertilizante -= 2
+        if self.contadorto > 15:
+            self.contadorto = 15
 
 
 comprados = []
@@ -1027,7 +974,15 @@ timer = RepeatTimer(50, cultivo_uno.plaga)
 timer.start()
 
 
-class InicioP:
+class InicioP(Trigo, Arroz, Maiz, Avena, Tomate, Animals):
+
+    def __init__(self):
+        Trigo.__init__(self)
+        Arroz.__init__(self)
+        Maiz.__init__(self)
+        Avena.__init__(self)
+        Tomate.__init__(self)
+        Animals.__init__(self)
 
     def menuplan(self):
         while True:
@@ -1095,7 +1050,10 @@ class InicioP:
                     print('Cultivos actuales para fertilizar: ', lista)
                     fert_c = input('A continuacion, elija el cultivo que desea fertilizar: ')
                     if fert_c == 'trigo':
-                        cultivo_uno.fertilizar()
+                        if self.fertilizante > 1:
+                            cultivo_uno.fertilizar()
+                        else:
+                            print("No tiene fertilizante")
                     elif fert_c == 'arroz':
                         cultivo_dos.fertilizar()
                     elif fert_c == 'maiz':

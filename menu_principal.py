@@ -2,6 +2,7 @@ import sys
 
 from animals import Animals, Pollo, Vaca, Oveja, Inicio, InicioP
 from repeat_timer import RepeatTimer
+from animals import Trigo, Arroz, Tomate, Avena, Maiz
 
 cultiv = '🌽'
 anima = '🐄'
@@ -14,6 +15,11 @@ planta = InicioP()
 pollo1 = Pollo()
 vaca1 = Vaca()
 oveja1 = Oveja()
+trigo1 = Trigo()
+arroz1 = Arroz()
+tomate1 = Tomate()
+avena1 = Avena()
+maiz1 = Maiz()
 
 timer = RepeatTimer(compra.productop, pollo1.producto)
 timer.start()
@@ -21,6 +27,8 @@ timer = RepeatTimer(compra.productov, vaca1.producto)
 timer.start()
 timer = RepeatTimer(compra.productoo, oveja1.producto)
 timer.start()
+
+a = print("---")
 
 while True:
     print('\033[1;34m================================================')
@@ -43,8 +51,80 @@ while True:
         print("2. Vender")
         print("3. Mejora")
         opmerca = int(input("Que desea hacer: "))
+
         if opmerca == 1:
-            compra.compra()
+            que_desea = int(input("Productos para:\n1. Animales\n2. Plantas\nQue desea comprar: "))
+
+            while que_desea > 2 or que_desea < 1:
+                que_desea = int(input("Opcion invalida\nProductos para:\n1. Animales\n2. Plantas\nQue desea comprar: "))
+
+            if que_desea == 1:
+                que_desea_animales = int(input("1. Comida\n2. Medicamento\nQue desea obtener: "))
+
+                while que_desea_animales > 2 or que_desea_animales < 1:
+                    que_desea_animales = int(input("Opcion invalida\n1. Comida\n2. Medicamento\nQue desea obtener: "))
+
+                if que_desea_animales == 1:
+                    comida = int(input("1. Concentrado\n2. Heno\nQue comida desea: "))
+
+                    while comida > 2 or comida < 1:
+                        comida = int(input("Opcion invalida\n1. Concentrado\n2. Heno\nQue comida desea: "))
+
+                    if comida == 1:
+                        if compra.monedas >= 50:
+                            compra.monedas -= 50
+                            pollo1.concentra()
+                            print("Tu dinero: ", compra.monedas)
+                        else:
+                            print("No tienes suficiente dinero!!!")
+
+                    elif comida == 2:
+                        if compra.monedas > 100:
+                            compra.monedas -= 50
+                            compra.henos()
+                            print("Tu dinero: ", compra.monedas)
+                        else:
+                            print("No tienes suficiente dinero!!!")
+
+                elif que_desea_animales == 2:
+
+                    medicamentos = int(
+                        input("1. Vacunas\n2. Vitaminas\3. Jarabe para la tos\nQue medicamento quiere: "))
+
+                    while medicamentos > 3 or medicamentos < 1:
+                        medicamentos = int(input(
+                            "Opcion invalida\n1. Vacunas\n2. Vitaminas\3. Jarabe para la tos\nQue medicamento quiere: "))
+
+                    if medicamentos == 1:
+                        if compra.monedas > 100:
+                            compra.monedas -= 100
+                            compra.vacun()
+                    elif medicamentos == 2:
+                        if compra.monedas > 75:
+                            compra.monedas -= 75
+                            compra.vita()
+                    elif medicamentos == 3:
+                        if compra.monedas > 50:
+                            compra.monedas -= 50
+                            compra.jarabe()
+
+            elif que_desea == 2:
+                print("Fertilizante")
+                print("1. Comprar")
+                print("2. Salir")
+                plantaop = int(input("Desea comprar fertilizante para las plantas?"))
+
+                if plantaop == 1:
+                    if compra.monedas > 50:
+                        trigo1.compra_fert()
+                        arroz1.compra_fert()
+                        tomate1.compra_fert()
+                        compra.monedas -= 25
+                        print("A comprando 50 de fertilizante")
+                        print("Tu dinero: ", compra.monedas)
+                    else:
+                        print("No tienes suficiente dinero!!!")
+
         elif opmerca == 2:
             print("1. Huevos")
             print("2. Leche")
@@ -72,5 +152,3 @@ while True:
             compra.mejora()
     elif opcion == 4:
         sys.exit()
-
-
