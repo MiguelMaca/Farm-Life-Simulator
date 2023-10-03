@@ -1,8 +1,7 @@
 import sys
 
-from animals import Animals, Pollo, Vaca, Oveja, Inicio, InicioP
+from animals import Animals, Pollo, Vaca, Oveja, Inicio, InicioP, Trigo, Arroz, Tomate, Avena, Maiz
 from repeat_timer import RepeatTimer
-from animals import Trigo, Arroz, Tomate, Avena, Maiz
 
 cultiv = '🌽'
 anima = '🐄'

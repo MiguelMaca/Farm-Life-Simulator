@@ -13,7 +13,6 @@ class Animals: #La clase inicia con mayuscula y en singular
         self.heno = 1
         self.concentrado = 1
         self.monedas = 350
-        self.fertilizante = 0
         self.productop = 45
         self.productov = 60
         self.productoo = 75
@@ -687,6 +686,7 @@ class Trigo(Animals):
     def __init__(self):
         super().__init__()
         self.contadort = 0
+        self.fertil = 1
 
     def sembrar(self):
         print('¡El cultivo (Trigo) ha sido sembrado con exito!')
@@ -731,12 +731,12 @@ class Trigo(Animals):
             cosechar_c.remove(cosecht)
 
     def compra_fert(self):
-        self.fertilizante += 5
+        self.fertil += 5
         print("Se agrego Fertilizante")
 
     def fertilizar(self):
         self.contadort += 2
-        self.fertilizante -= 2
+        self.fertil -= 2
         if self.contadort > 15:
             self.contadort = 15
 
@@ -745,7 +745,7 @@ class Trigo(Animals):
         self.contadort = self.contadort - 2
 
 
-class Arroz(Animals):
+class Arroz(Trigo):
     def __init__(self):
         super().__init__()
         self.contadora = 0
@@ -789,11 +789,11 @@ class Arroz(Animals):
         productos_g.append(prod2)
 
     def compra_fert(self):
-        self.fertilizante += 5
+        self.fertil += 5
 
     def fertilizar(self):
         self.contadora += 2
-        self.fertilizante -= 2
+        self.fertil -= 2
         if self.contadora > 15:
             self.contadora = 15
 
@@ -802,7 +802,7 @@ class Arroz(Animals):
         self.contadora = self.contadora - 2
 
 
-class Maiz(Animals):
+class Maiz(Trigo):
     def __init__(self):
         super().__init__()
         self.contadorm = 0
@@ -846,16 +846,16 @@ class Maiz(Animals):
         productos_g.append(prod3)
 
     def compra_fert(self):
-        self.fertilizante += 5
+        self.fertil += 5
 
     def fertilizar(self):
         self.contadorm += 2
-        self.fertilizante -= 2
+        self.fertil -= 2
         if self.contadorm > 15:
             self.contadorm = 15
 
 
-class Avena(Animals):
+class Avena(Trigo):
     def __init__(self):
         super().__init__()
         self.contadorav = 0
@@ -899,16 +899,16 @@ class Avena(Animals):
         productos_g.append(prod4)
 
     def compra_fert(self):
-        self.fertilizante += 5
+        self.fertil += 5
 
     def fertilizar(self):
         self.contadorav += 2
-        self.fertilizante -= 2
+        self.fertil -= 2
         if self.contadorav > 15:
             self.contadorav = 15
 
 
-class Tomate(Animals):
+class Tomate(Trigo):
     def __init__(self):
         super().__init__()
         self.contadorto = 0
@@ -952,11 +952,11 @@ class Tomate(Animals):
         productos_g.append(prod5)
 
     def compra_fert(self):
-        self.fertilizante += 5
+        self.fertil += 5
 
     def fertilizar(self):
         self.contadorto += 2
-        self.fertilizante -= 2
+        self.fertil -= 2
         if self.contadorto > 15:
             self.contadorto = 15
 
@@ -974,15 +974,10 @@ timer = RepeatTimer(50, cultivo_uno.plaga)
 timer.start()
 
 
-class InicioP(Trigo, Arroz, Maiz, Avena, Tomate, Animals):
-
+class InicioP(Trigo):
+    
     def __init__(self):
-        Trigo.__init__(self)
-        Arroz.__init__(self)
-        Maiz.__init__(self)
-        Avena.__init__(self)
-        Tomate.__init__(self)
-        Animals.__init__(self)
+        super().__init__()
 
     def menuplan(self):
         while True:
@@ -1050,27 +1045,27 @@ class InicioP(Trigo, Arroz, Maiz, Avena, Tomate, Animals):
                     print('Cultivos actuales para fertilizar: ', lista)
                     fert_c = input('A continuacion, elija el cultivo que desea fertilizar: ')
                     if fert_c == 'trigo':
-                        if self.fertilizante > 1:
+                        if self.fertil > 1:
                             cultivo_uno.fertilizar()
                         else:
                             print("No tiene fertilizante")
                     elif fert_c == 'arroz':
-                        if self.fertilizante > 1:
+                        if self.fertil > 1:
                             cultivo_dos.fertilizar()
                         else:
                             print("No tiene fertilizante")
                     elif fert_c == 'maiz':
-                        if self.fertilizante > 1:
+                        if self.fertil > 1:
                             cultivo_tres.fertilizar()
                         else:
                             print("No tiene fertilizante")
                     elif fert_c == 'avena':
-                        if self.fertilizante > 1:
+                        if self.fertil > 1:
                             cultivo_cuatro.fertilizar()
                         else:
                             print("No tiene fertilizante")
                     elif fert_c == 'tomate':
-                        if self.fertilizante > 1:
+                        if self.fertil > 1:
                             cultivo_cinco.fertilizar()
                         else:
                             print("No tiene fertilizante")
