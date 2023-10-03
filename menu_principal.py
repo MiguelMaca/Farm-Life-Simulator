@@ -28,8 +28,6 @@ timer.start()
 timer = RepeatTimer(compra.productoo, oveja1.producto)
 timer.start()
 
-a = print("---")
-
 while True:
     print('\033[1;34m================================================')
     print('\033[1;32m              MENU PRINCIPAL \n           FARM LIFE SIMULATOR ')
