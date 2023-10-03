@@ -41,8 +41,8 @@ class Animals: #La clase inicia con mayuscula y en singular
 
                 if comida == 1:
                     if self.monedas >= 50:
-                        self.monedas = self.monedas - 50
-                        self.concentrado = self.concentrado + 50
+                        self.monedas -= 50
+                        self.concentrado += 50
                         print("A comprado 50 de Concentrado")
                         print("Tu dinere: ", self.monedas)
                     else:
@@ -50,8 +50,8 @@ class Animals: #La clase inicia con mayuscula y en singular
 
                 elif comida == 2:
                     if self.monedas > 100:
-                        self.monedas = self.monedas-50
-                        self.heno = self.heno + 25
+                        self.monedas -= 50
+                        self.heno += 25
                         print("A comprado 25 de Heno")
                         print("Tu dinere: ", self.monedas)
                     else:
@@ -67,16 +67,16 @@ class Animals: #La clase inicia con mayuscula y en singular
 
                 if medicamentos == 1:
                     if self.monedas > 100:
-                        self.monedas = self.monedas - 100
-                        self.vacunas = self.vacunas + 1
+                        self.monedas -= 100
+                        self.vacunas += 1
                 elif medicamentos == 2:
                     if self.monedas > 75:
-                        self.monedas = self.monedas - 75
-                        self.vitaminas = self.vitaminas + 1
+                        self.monedas -= 75
+                        self.vitaminas += 1
                 elif medicamentos == 3:
                     if self.monedas > 50:
-                        self.monedas = self.monedas - 50
-                        self.jarabe = self.jarabe + 1
+                        self.monedas -= 50
+                        self.jarabe += 1
 
         elif que_desea == 2:
             print("Fertilizante")
@@ -86,12 +86,63 @@ class Animals: #La clase inicia con mayuscula y en singular
 
             if plantaop == 1:
                 if self.monedas > 50:
-                    self.fertilizante = self.fertilizante + 50
-                    self.monedas = self.monedas - 25
+                    self.fertilizante += 50
+                    self.monedas -= 25
                     print("A comprando 50 de fertilizante")
                     print("Tu dinero: ", self.monedas)
                 else:
                     print("No tienes suficiente dinero!!!")
+
+    def ganancia_pollo(self):
+        self.monedas += 5
+        print("Gano 5 monedas")
+        print("Tu dinero total: ", self.monedas)
+
+    def ganancia_vaca(self):
+        self.monedas += 10
+        print("Gano 10 monedas")
+        print("Tu dinero total: ", self.monedas)
+
+    def ganancia_oveja(self):
+        self.monedas += 25
+        print("Gano 25 monedas")
+        print("Tu dinero total: ", self.monedas)
+
+    def mejora(self):
+        print("1. Nivel 1 (Costo 100 monedas)")
+        print("2. Nivel 2 (Costo 200 monedas)")
+        print("3. Nivel 3 (Costo 300 monedas)")
+        opcion = int(input("Que mejora desea realizar a la granja"))
+
+        if opcion == 1:
+            if self.monedas < 100:
+                print("No tienes suficientes monedas!!!")
+            else:
+                self.productop = 40
+                self.productoo = 70
+                self.productov = 55
+                print("Tu granja es de Nivel 1 !!!")
+                self.monedas -= 100
+        elif opcion == 2:
+            if self.monedas < 200:
+                print("No tienes suficientes monedas!!!")
+            else:
+                self.productop = 35
+                self.productoo = 65
+                self.productov = 50
+                print("Tu granja es de Nivel 2 !!!")
+                self.monedas -= 200
+        elif opcion == 3:
+            if self.monedas < 300:
+                print("No tienes suficientes monedas!!!")
+            else:
+                self.productop = 30
+                self.productoo = 60
+                self.productov = 45
+                print("Tu granja es de Nivel 3 !!!")
+                self.monedas -= 300
+        else:
+            print("Regresando al menu")
 
 
 class Pollo(Animals):
@@ -101,13 +152,8 @@ class Pollo(Animals):
         print("Tu gallina acaba de producir huevos")
 
     def venta(self):
-        if self.huevos >= 1:
-            print("Vendio 1 huevo")
-            print("Gano 3 monedas")
-            self.monedas += 3
-            self.huevos -= 1
-        else:
-            print("No tiene huevos en el inventario")
+        print("Vendio 1 huevo")
+        self.huevos -= 1
 
     def estadisticas(self):
         print("Pollo")
@@ -258,21 +304,19 @@ class Pollo(Animals):
 
 
 class Vaca(Animals):
-    def __init__(self):
-        super().__init__()
 
     def producto(self):
-        self.leche = self.leche + 1
+        self.leche += 1
         print("Tu vaca acaba de producir Leche")
 
+    def ganancia(self):
+        self.monedas += 10
+        print("Gano 10 monedas")
+        print("Tu dinero total: ", self.monedas)
+
     def venta(self):
-        if self.leche == 1:
-            print("Vendio 1 leche")
-            print("Gano 10 monedas")
-            self.monedas = self.monedas + 10
-            self.leche = self.leche - 1
-        else:
-            print("No tiene leche en el inventario")
+        print("Vendio 1 leche")
+        self.leche -= 1
 
     def estadisticas(self):
         print("Oveja")
@@ -421,21 +465,19 @@ class Vaca(Animals):
 
 
 class Oveja(Animals):
-    def __init__(self):
-        super().__init__()
 
     def producto(self):
-        self.lana = self.lana + 1
+        self.lana += 1
         print("Tu oveja acaba de producir lana")
 
+    def ganancia(self):
+        self.monedas += 25
+        print("Gano 25 monedas")
+        print("Tu dinero total: ", self.monedas)
+
     def venta(self):
-        if self.lana == 1:
-            print("Vendio 1 lana")
-            print("Gano 25 monedas")
-            self.monedas = self.monedas + 3
-            self.lana = self.lana - 1
-        else:
-            print("No tiene lana en el inventario")
+        print("Vendio 1 lana")
+        self.lana -= 1
 
     def estadisticas(self):
         print("Oveja")
@@ -1041,7 +1083,7 @@ class InicioP:
                 elif cos == 'arroz':
                     cultivo_dos.cosechar()
                 elif cos == 'maiz':
-                        cultivo_tres.cosechar()
+                    cultivo_tres.cosechar()
                 elif cos == 'avena':
                     cultivo_cuatro.cosechar()
                 elif cos == 'tomate':
@@ -1066,41 +1108,3 @@ class InicioP:
             elif opci == 5:
                 break
 
-
-class Ventaja(Pollo):
-
-    def mejora(self):
-        print("1. Nivel 1 (Costo 100 monedas)")
-        print("2. Nivel 2 (Costo 200 monedas)")
-        print("3. Nivel 3 (Costo 300 monedas)")
-        opcion = int(input("Que mejora desea realizar a la granja"))
-
-        if opcion == 1:
-            if self.monedas < 100:
-                print("No tienes suficientes monedas!!!")
-            else:
-                self.productop = 40
-                self.productoo = 70
-                self.productov = 55
-                print("Tu granja es de Nivel 1 !!!")
-                self.monedas -= 100
-        elif opcion == 2:
-            if self.monedas < 200:
-                print("No tienes suficientes monedas!!!")
-            else:
-                self.productop = 35
-                self.productoo = 65
-                self.productov = 50
-                print("Tu granja es de Nivel 2 !!!")
-                self.monedas -= 200
-        elif opcion == 3:
-            if self.monedas < 300:
-                print("No tienes suficientes monedas!!!")
-            else:
-                self.productop = 30
-                self.productoo = 60
-                self.productov = 45
-                print("Tu granja es de Nivel 3 !!!")
-                self.monedas -= 300
-        else:
-            print("Regresando al menu")

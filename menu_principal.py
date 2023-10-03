@@ -1,6 +1,6 @@
 import sys
 
-from animals import Animals, Pollo, Vaca, Oveja, Inicio, InicioP, Ventaja
+from animals import Animals, Pollo, Vaca, Oveja, Inicio, InicioP
 from repeat_timer import RepeatTimer
 
 cultiv = '🌽'
@@ -11,17 +11,15 @@ sal = '❌'
 compra = Animals()
 animal = Inicio()
 planta = InicioP()
-venta = Ventaja()
 pollo1 = Pollo()
 vaca1 = Vaca()
 oveja1 = Oveja()
-animalt = Animals()
 
-timer = RepeatTimer(animalt.productop, pollo1.producto)
+timer = RepeatTimer(compra.productop, pollo1.producto)
 timer.start()
-timer = RepeatTimer(animalt.productov, vaca1.producto)
+timer = RepeatTimer(compra.productov, vaca1.producto)
 timer.start()
-timer = RepeatTimer(animalt.productoo, oveja1.producto)
+timer = RepeatTimer(compra.productoo, oveja1.producto)
 timer.start()
 
 while True:
@@ -53,15 +51,26 @@ while True:
             print("3. Lana")
             que_deseav = int(input("Que desea vender en el mercado?"))
             if que_deseav == 1:
-                pollo1.venta()
+                if pollo1.huevos >= 1:
+                    pollo1.venta()
+                    compra.ganancia_pollo()
+                else:
+                    print("No tiene huevos en el inventario")
             elif que_deseav == 2:
-                vaca1.venta()
+                if vaca1.leche >= 1:
+                    vaca1.venta()
+                    compra.ganancia_vaca()
+                else:
+                    print("No tiene leche en el inventario")
             elif que_deseav == 3:
-                oveja1.venta()
+                if oveja1.lana >= 1:
+                    oveja1.venta()
+                    compra.ganancia_oveja()
+                else:
+                    print("No tienes lana en el inventario")
         elif opmerca == 3:
-            venta.mejora()
+            compra.mejora()
     elif opcion == 4:
         sys.exit()
 
-#print('\033[1;32mFARM LIFE SIMULATOR ')
 
