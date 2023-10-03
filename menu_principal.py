@@ -117,6 +117,8 @@ while True:
                         trigo1.compra_fert()
                         arroz1.compra_fert()
                         tomate1.compra_fert()
+                        avena1.compra_fert()
+                        maiz1.compra_fert()
                         compra.monedas -= 25
                         print("A comprando 50 de fertilizante")
                         print("Tu dinero: ", compra.monedas)
