@@ -117,17 +117,20 @@ while True:
                 plantaop = int(input("Desea comprar fertilizante para las plantas?"))
 
                 if plantaop == 1:
-                    if compra.monedas > 50:
-                        trigo1.compra_fert()
-                        arroz1.compra_fert()
-                        tomate1.compra_fert()
-                        avena1.compra_fert()
-                        maiz1.compra_fert()
-                        compra.monedas -= 25
-                        print("A comprando 50 de fertilizante")
-                        print("Tu dinero: ", compra.monedas)
-                    else:
-                        print("No tienes suficiente dinero!!!")
+                    try:
+                        if compra.monedas > 50:
+                            trigo1.compra_fert()
+                            arroz1.compra_fert()
+                            tomate1.compra_fert()
+                            avena1.compra_fert()
+                            maiz1.compra_fert()
+                            compra.monedas -= 25
+                            print("A comprando 50 de fertilizante")
+                            print("Tu dinero: ", compra.monedas)
+                        else:
+                            print("No tienes suficiente dinero!!!")
+                    except ValueError:
+                        print('Datos incorrectos')
 
         elif opmerca == 2:
             print("1. Huevos")
