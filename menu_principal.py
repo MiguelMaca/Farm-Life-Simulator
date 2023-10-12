@@ -41,15 +41,18 @@ while True:
 
     print('\033[1;34m=================================================')
     opcion = int(input('¡BIENVENIDO! \n¡Por favor, ingrese una opcion para comenzar a jugar!: '))
-    if opcion == 1:
-        planta.menuplan()
-    elif opcion == 2:
-        animal.menuan()
-    elif opcion == 3:
-        print("1. Comprar")
-        print("2. Vender")
-        print("3. Mejora")
-        opmerca = int(input("Que desea hacer: "))
+    try:
+        if opcion == 1:
+            planta.menuplan()
+        elif opcion == 2:
+            animal.menuan()
+        elif opcion == 3:
+            print("1. Comprar")
+            print("2. Vender")
+            print("3. Mejora")
+            opmerca = int(input("Que desea hacer: "))
+    except ValueError:
+        print('Datos incorrectos, vuelva a intentar')
 
         if opmerca == 1:
             que_desea = int(input("Productos para:\n1. Animales\n2. Plantas\nQue desea comprar: "))
